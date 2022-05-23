@@ -12,8 +12,8 @@ Ad7124 adc(csPin, 4000000);
 
 void calibrate() {
   adc.setAdcControl(AD7124_OpMode_Idle, AD7124_FullPower, false);
+  delay(100);
   for(int i =0; i< channels; i++) {
-
     adc.enableChannel(i, true);
     adc.setAdcControl(AD7124_OpMode_SystemOffsetCalibration, AD7124_FullPower, false);
     delay(100);
@@ -45,7 +45,7 @@ void setup() {
 //  
   for(int i =0; i< channels; i++) {
     adc.setup[i].setConfig(AD7124_Ref_Avdd, AD7124_Gain_128, true);    
-    adc.setup[i].setFilter(AD7124_Filter_SINC4, 128);
+    adc.setup[i].setFilter(AD7124_Filter_SINC4, 1);
   }
   
   for(int i =0; i< channels; i++) {
